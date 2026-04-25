@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/static/style.css">
+
+<header>
+    <h2>Welcome {{user}}</h2>
+    <a href="/logout" class="btn secondary">Logout</a>
+</header>
+
+<div class="container">
+    <h1>Create Post</h1>
+
+    <form method="POST">
+        <input name="title" placeholder="Title" required>
+        <textarea name="content" placeholder="Write blog..." required></textarea>
+        <button class="btn primary">Post</button>
+    </form>
+
+    <h1>All Posts</h1>
+
+    {% for post in posts %}
+    <div class="icon-box">
+        <p>{{post.title}}</p>
+        <small>by {{post.author}}</small><br>
+
+        <a href="/post/{{post.id}}" class="btn primary">View</a>
+        <a href="/delete/{{post.id}}" class="btn secondary">Delete</a>
+    </div>
+    {% else %}
+    <p class="no-task">No posts yet</p>
+    {% endfor %}
+</div>

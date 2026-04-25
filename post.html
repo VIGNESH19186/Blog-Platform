@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/static/style.css">
+
+<div class="container">
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+
+    <h2>Comments</h2>
+
+    {% for c in post.comments %}
+    <div class="icon-box">
+        <p>{{c.user}}</p>
+        <small>{{c.text}}</small>
+    </div>
+    {% else %}
+    <p class="no-task">No comments yet</p>
+    {% endfor %}
+
+    <form method="POST">
+        <input name="comment" placeholder="Add comment..." required>
+        <button class="btn primary">Comment</button>
+    </form>
+
+    <br>
+    <a href="/dashboard" class="btn secondary">Back</a>
+</div>
